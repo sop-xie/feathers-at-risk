@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bird Atlas · Feathers at Risk prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="profile.css">
+  <script type="module" src="atlas.js"></script>
+</head>
+<body>
+<main>
+  <header class="intro">
+    <p class="kicker">Feathers at Risk</p>
+    <h1>One in eight bird species is threatened with extinction. Which ones?</h1>
+    <p class="dek">
+      Each circle below is a group of birds, shaded by the share of its species
+      threatened with extinction. Click into an order, then a family, to see its
+      species, each colored by its 2024 IUCN Red List status. The danger isn't
+      spread evenly: it piles up in some families and skips others entirely.
+    </p>
+  </header>
+
+  <figure class="atlas">
+    <div class="atlas-head">
+      <div class="legend" id="legend" aria-label="Color key"></div>
+      <div class="pills" role="group" aria-label="Compare a trait">
+        <span class="pills-label">Compare a trait:</span>
+        <button type="button" data-filter="all" aria-pressed="true">All birds</button>
+        <button type="button" data-filter="sea" aria-pressed="false">Seabirds</button>
+        <button type="button" data-filter="island" aria-pressed="false">Island-only breeders</button>
+        <button type="button" data-filter="heavy" aria-pressed="false">Over 1 kg</button>
+        <button type="button" data-filter="flightless" aria-pressed="false">Flightless</button>
+      </div>
+      <p class="readout" id="readout" aria-live="polite"></p>
+      <div class="compare empty" id="compare" aria-hidden="true"></div>
+    </div>
+
+    <div class="stage">
+      <nav class="crumbs" id="crumbs" aria-label="Zoom level"></nav>
+      <button type="button" class="reset" id="reset" hidden>
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8a5 5 0 1 0 1.6-3.7M3 2.5v3h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        All birds
+      </button>
+      <svg id="chart" role="img" aria-label="Bird orders as circles shaded by share of species threatened; zooming in reveals families, then species colored by IUCN status"></svg>
+      <div class="tooltip" id="tooltip" hidden></div>
+    </div>
+
+    <details class="species-list" id="species-list" hidden>
+      <summary></summary>
+      <div class="species-list-body"></div>
+    </details>
+
+    <figcaption class="source">
+      <span class="how">Click a group to zoom in; species appear once you open a family. Click a species to pop up its full profile. Click the background or press Esc to step back out.
+        Picking a trait keeps only the families with at least one such bird; their other species stay, faded, for comparison.</span>
+      Threatened means Vulnerable, Endangered or Critically Endangered; percentages
+      count living species only. Circle area counts species, not individual birds.
+      Source: AVONET (Tobias et al., 2022); BIRDBASE (Şekercioğlu et al., 2025);
+      IUCN Red List, 2024.
+    </figcaption>
+  </figure>
+
+  <article class="body">
+    <h2>Is it the family, or the traits?</h2>
+    <p>
+      Close relatives share their traits as well as their risk, so a chart that
+      says “big birds are threatened” might really be saying “a few big-bird
+      families are threatened.” Zooming into a single family lets you compare
+      species that differ in a trait but share the same ancestry.
+    </p>
+    <p>
+      Island breeding passes that test. Among rails and crakes, the species
+      that breed only on islands are far more likely to be threatened than
+      their mainland relatives.
+    </p>
+    <p><button type="button" class="link-button" id="try-rails">See the island rails →</button></p>
+
+    <h2>A note on the data</h2>
+    <p>
+      These are correlations, not causes: island breeding and large bodies
+      leave species more exposed to threats like invasive predators and
+      hunting. Gray rings mark the 12 species in the data already extinct or
+      surviving only in captivity; species flagged “possibly extinct” stay
+      Critically Endangered, as the Red List lists them.
+    </p>
+  </article>
+</main>
+</body>
+</html>

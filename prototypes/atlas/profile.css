@@ -1,0 +1,62 @@
+/* Species profile (profile.js). Tokens come from style.css. */
+.card .c-more { display: inline-block; margin-top: 10px; font-weight: 600; color: var(--cr); }
+
+html.pf-lock { overflow: hidden; }
+/* A pop-up over the dimmed atlas; the backdrop scrolls if the dialog is taller than the screen. */
+.profile { position: fixed; inset: 0; z-index: 20; display: flex; overflow: auto; padding: 32px 24px; background: rgba(18, 18, 18, .5); color: var(--ink); font-family: var(--sans); }
+.profile[hidden] { display: none; }
+.pf-dialog { position: relative; width: 100%; max-width: 1180px; margin: auto; overflow: hidden; background: #fff; border-radius: 8px; box-shadow: 0 12px 48px rgba(0, 0, 0, .3); }
+.pf-grid { display: grid; grid-template-columns: minmax(260px, 340px) 1fr; gap: 28px; padding: 24px 24px 0; }
+.pf-close { position: absolute; top: 10px; right: 12px; z-index: 1; width: 34px; height: 34px; font: 400 24px/1 var(--sans); color: var(--ink-2); background: rgba(255, 255, 255, .9); border: 1px solid #c7c7c7; border-radius: 50%; cursor: pointer; }
+.pf-close:hover { border-color: var(--ink); color: var(--ink); }
+.pf-map { padding-right: 32px; } /* clear the close button */
+
+.pf-panel { padding: 22px 24px; background: #f4f1ea; }
+.pf-k { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #555; }
+.pf-status { display: flex; align-items: center; gap: 12px; margin: 8px 0 18px; font-size: 30px; font-weight: 600; line-height: 1.1; }
+.pf-status small { display: block; margin-top: 2px; font-size: 14px; font-weight: 400; color: #555; }
+.pf-status .big { flex: none; width: 26px; height: 26px; border-radius: 50%; }
+.pf-status .big.nt { box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, .2); }
+.pf-status .big.ring { background: transparent !important; border: 6px solid var(--ex); }
+.pf-box { margin-bottom: 20px; padding: 14px 16px; background: #fbfaf7; font-size: 14px; line-height: 1.4; color: var(--ink-2); }
+.pf-box strong { display: block; margin: 4px 0 2px; font-size: 28px; color: var(--ink); }
+.pf-split { margin-top: 8px; padding-top: 8px; border-top: 1px solid #e6e2d8; }
+.pf-facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; margin: 0; font-size: 13.5px; }
+.pf-facts dt { color: #6b6b6b; }
+.pf-facts dd { margin: 0; }
+
+/* the photo leads the side column; the facts panel sits under it */
+.pf-photo { margin: 0 0 18px; }
+.pf-img img { display: block; width: 100%; max-height: 420px; object-fit: contain; background: #f7f7f5; }
+.pf-img .none { padding: 28px 16px; background: #f7f7f5; font-size: 13px; color: #777; text-align: center; }
+.pf-photo figcaption { margin-top: 6px; font-size: 11.5px; line-height: 1.4; color: var(--muted); }
+.pf-photo a { color: inherit; }
+
+.pf-mapbox { position: relative; overflow: hidden; }
+.pf-map svg { display: block; width: 100%; height: auto; cursor: grab; touch-action: none; }
+.pf-map svg:active { cursor: grabbing; }
+.pf-zoom { position: absolute; top: 8px; right: 8px; display: flex; flex-direction: column; gap: 4px; }
+.pf-zoom button { width: 32px; height: 32px; padding: 0; font: 600 18px/1 var(--sans); color: var(--ink); background: rgba(255, 255, 255, .95); border: 1px solid #c7c7c7; border-radius: 4px; cursor: pointer; }
+.pf-zoom button:hover { border-color: var(--ink); }
+.pf-maphint { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
+.pf-maptitle { margin: 4px 0 6px; font-size: 20px; font-weight: 600; }
+.pf-maplegend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-bottom: 8px; font-size: 13px; color: var(--ink-2); }
+.pf-maplegend span { display: inline-flex; align-items: center; gap: 6px; }
+.pf-ramp { display: inline-block; width: 90px; height: 10px; background: linear-gradient(90deg, rgba(47, 95, 152, .42), rgba(47, 95, 152, .95)); }
+.pf-centerdot { width: 10px; height: 10px; border-radius: 50%; border: 2.5px solid var(--ink); }
+.pf-land { fill: #e2e2df; }
+.pf-borders { fill: none; stroke: #fff; stroke-width: .7; vector-effect: non-scaling-stroke; }
+.pf-center { fill: none; stroke: var(--ink); stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+.pf-mapnote { margin: 6px 0 0; font-size: 12.5px; line-height: 1.45; color: var(--muted); }
+
+.pf-foot { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-top: 28px; padding: 22px 24px; background: #f4f1ea; }
+.pf-name { display: inline; margin: 0 16px 0 0; font: 400 clamp(34px, 5vw, 60px)/1.05 var(--sans); letter-spacing: -.01em; }
+.pf-sci { font: italic 22px var(--serif); color: #555; }
+.pf-src { margin: 0; font-size: 13px; color: #555; }
+
+@media (max-width: 820px) {
+  .profile { padding: 0; }
+  .pf-dialog { border-radius: 0; }
+  .pf-grid { grid-template-columns: 1fr; padding: 52px 16px 0; }
+  .pf-map { padding-right: 0; }
+}
