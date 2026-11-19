@@ -5,13 +5,13 @@ only Data Deficient) and the columns the atlas uses. "Possibly extinct"
 (CR (PE), CR (PEW)) stays Critically Endangered, with a flag. Taxonomy
 (order, family) is AVONET's.
 
-Run from the repo root:  python prototypes/atlas/prepare_data.py
+Run from the repo root:  python scripts/prepare_data.py
 """
 
 import pandas as pd
 
 SRC = "data/birds_merged.csv"
-OUT = "prototypes/atlas/birds_atlas.csv"
+OUT = "data/birds_atlas.csv"
 
 STATUS_MAP = {
     "LC": "LC", "NT": "NT", "VU": "VU", "EN": "EN",

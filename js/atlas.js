@@ -46,7 +46,7 @@ function fmtMass(g) {
 }
 
 // ---------- data ----------
-const birds = await d3.csv("birds_atlas.csv", (d) => ({
+const birds = await d3.csv("data/birds_atlas.csv", (d) => ({
   sci: d.sci,
   name: d.name,
   order: d.order,
