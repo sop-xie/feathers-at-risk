@@ -183,6 +183,11 @@ circle.leaf.faded { opacity: .1; }
 .body { margin-top: 48px; font-size: 19px; line-height: 1.6; }
 .body h2 { margin: 36px 0 8px; font-family: var(--sans); font-size: 20px; font-weight: 700; }
 .body p { margin: 0 0 16px; }
+.body h3 { margin: 24px 0 6px; font-family: var(--sans); font-size: 17px; font-weight: 600; }
+/* prototype checkpoint writeup; sits above the article text for now */
+.writeup { padding-bottom: 20px; margin-bottom: 8px; border-bottom: 1px solid var(--rule); }
+.writeup .repo { font-family: var(--sans); font-size: 15px; color: var(--ink-2); }
+.writeup .repo a { color: var(--ink); text-underline-offset: 2px; }
 .link-button {
   padding: 0; border: none; background: none; cursor: pointer;
   font: 600 16px var(--sans); color: var(--cr); text-decoration: underline; text-underline-offset: 3px;

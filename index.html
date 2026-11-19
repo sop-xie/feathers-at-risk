@@ -65,6 +65,59 @@
   </figure>
 
   <article class="body">
+    <section class="writeup" id="writeup">
+      <h2>Project Prototype Writeup</h2>
+
+      <h3>What have you done so far?</h3>
+      <p>
+        In this project, we wanted to see which bird species are threatened
+        with extinction, and whether that comes down to their traits or to the
+        families they belong to. We started by merging two bird databases into
+        one table of about 10,900 species. AVONET gave us body measurements,
+        habitat, and diet, while BIRDBASE gave us each species' 2024 IUCN Red
+        List status, whether it breeds only on islands, and its clutch size.
+        The first name join silently dropped every species whose genus or
+        spelling was different between the two sources, so we built a reviewed
+        name-fix table and a script that rebuilds the merged file from the raw
+        downloads. The main visualization is a zoomable D3 circle pack where
+        orders open into families and families open into species, and each
+        group is shaded by the share of its species that are threatened.
+        Clicking on a species opens a profile with a Wikipedia photo, its
+        traits, and a map of where it has been recorded in GBIF. The buttons
+        above the chart let you pick out seabirds, island-only breeders, birds
+        over 1 kg, or flightless birds, which fades every bird that doesn't
+        match and compares the matching birds' threatened share with everyone
+        else's. Before landing on the atlas, we sketched a few other designs,
+        including a taxonomic tree and some other chart variations. We went
+        with the circle pack because it was the only design that let readers
+        compare species within a single family.
+      </p>
+
+      <h3>What will be the most challenging part of our project to design, and why?</h3>
+      <p>
+        The hardest part to design is going to be separating the effect of a
+        trait from the effect of a family. Close relatives tend to share both
+        their traits and their risk, so a chart showing that heavy birds are
+        more threatened might really just be showing that a few heavy-bird
+        families, like albatrosses, are in trouble. This shows up in our data,
+        since breeding only on islands predicts risk inside 68 of 81 families,
+        but body mass only does so in 50 of 88. The atlas already groups
+        species by family, but we still need the filters and annotations to
+        point readers toward the pattern inside each family instead of just
+        the overall color. Our second challenge is the scrollytelling we have
+        planned, where all of the roughly 10,900 species dots move between
+        layouts. Animating that many SVG circles at once already slowed our
+        filter clicks down by one to three seconds. So we will most likely move
+        those transitions to canvas, and the catch is that hover and click
+        still have to work once the dots are drawn there.
+      </p>
+
+      <p class="repo">
+        Our code and data are on GitHub at
+        <a href="https://github.com/sop-xie/feathers-at-risk">sop-xie/feathers-at-risk</a>.
+      </p>
+    </section>
+
     <h2>Is it the family, or the traits?</h2>
     <p>
       Close relatives share their traits as well as their risk, so a chart that
